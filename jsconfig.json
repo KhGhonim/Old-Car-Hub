@@ -1,7 +1,17 @@
 {
   "compilerOptions": {
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
+    "checkJs": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "resolveJsonModule": true,
+    "lib": ["es6", "dom", "es2017"],
+  },
+  "include": [
+    "src",
+    "app",
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }
