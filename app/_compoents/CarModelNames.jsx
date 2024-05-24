@@ -11,7 +11,7 @@ export default function CarModelNames() {
   const isInView = useInView(ref);
   return (
     <div>
-      <section className="bg-[--background-color] text-white h-full  flex justify-center items-center flex-row md:flex-col ">
+      <section className="bg-[--background-color] text-white h-full  flex justify-center items-center flex-row md:flex-col shadow-xl ">
         <div className="mx-auto max-w-screen-xl px-4 py-32  ">
           <div className="mx-auto  text-center">
             <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">

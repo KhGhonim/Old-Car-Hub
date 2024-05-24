@@ -2,20 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CiCloudMoon, CiLight, CiMenuBurger } from "react-icons/ci";
 import { IoMdCloseCircle } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
-
-
-
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 export default function Navbar() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [theme, setTheme] = useState("light");
+  const dropdownRef = useRef(null);
+
   const toggleMenu = () => {
     setIsMenuVisible((prevState) => !prevState);
   };
-
-  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -29,6 +28,18 @@ export default function Navbar() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsMenuVisible(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -37,11 +48,10 @@ export default function Navbar() {
     localStorage.setItem("theme", newTheme);
   };
 
-  
   return (
     <header className="bg-white">
       <div className=" max-w-screen-xl ">
-        <div className=" fixed flex h-16 z-40  w-screen items-center justify-between pr-5 pl-5 shadow-lg  bg-[--background-color]  text-[--text-color]">
+        <div className=" fixed flex h-16 z-40  w-screen items-center justify-between pr-5 pl-5 shadow-lg  bg-[--background-color-Menu]  text-[--text-color]">
           <div className="md:flex md:items-center md:gap-12">
             <Link className="block" href="/">
               <Image
@@ -58,52 +68,33 @@ export default function Navbar() {
           <div className="hidden md:block">
             <nav aria-label="Global">
               <ul className="flex items-center gap-6 text-sm ">
-              <li
-                  className="text-[--text-color] transition hover:scale-110 p-3 rounded-md cursor-pointer"
-
-                >
-                  <Link href="#"> About </Link>
+                <li className="text-[--nav-color] transition hover:scale-110 p-3 rounded-md cursor-pointer">
+                  <Link id="About" href="#Contact">
+                    {" "}
+                    About{" "}
+                  </Link>
                 </li>
 
-                <li
-                  className="text-[--font-color] transition  hover:scale-110   p-3 rounded-md cursor-pointer"
-
-                >
-                  <Link href="#"> Careers </Link>
+                <li className="text-[--nav-color] transition  hover:scale-110   p-3 rounded-md cursor-pointer">
+                  <Link href="#PrimaryClient"> Client </Link>
                 </li>
 
-                <li
-                  className="text-[--font-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer"
-
-                >
+                <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
                   <Link href="#"> Buy </Link>
                 </li>
 
-                <li
-                  className="text-[--font-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer"
-
-                >
-                  <Link href="#"> Services </Link>
+                <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
+                  <Link href="#CarCatalogue"> Car Catalogue </Link>
                 </li>
 
-                <li
-                  className="text-[--font-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer"
-
-                >
-                  <Link href="#"> Newest </Link>
-                </li>
-
-                <li
-                  className="text-[--font-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer"
-
-                >
+                <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
                   <Link href="#"> Blog </Link>
                 </li>
               </ul>
             </nav>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex justify-between items-center gap-4">
             <div>
               {theme === "light" ? (
                 <button onClick={toggleTheme}>
@@ -119,25 +110,19 @@ export default function Navbar() {
                 </button>
               )}
             </div>
-            <div className="sm:flex sm:gap-4">
-              <Link
-                className="rounded-md bg-[--buttons-color]  hover:bg-[--buttons-color-hovered] px-5 py-2.5 text-sm font-medium text-[--text-color] shadow"
-                href="/SignIn"
-              >
-                Login
-              </Link>
-
-              <div className="hidden sm:flex">
-                <Link
-                  className="rounded-md px-5 py-2.5 text-sm font-medium bg-[--buttons-color]  hover:bg-[--buttons-color-hovered]  text-[--text-color]  hover:shadow-slate-100"
-                  href="/SignUp"
-                >
-                  Register
-                </Link>
-              </div>
+            <div className="sm:flex  text-white mr-3 ">
+            <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn >
+                <UserButton />
+              </SignedIn>
             </div>
             {/* Humburger Icon for max-md screen devices and below */}
-            <div className="block relative md:hidden">
+
+
+
+            <div className="block relative md:hidden" ref={dropdownRef}>
               <button
                 className={`rounded bg-[--buttons-color]  hover:bg-[--buttons-color-hovered]  p-2 text-gray-600 transition hover:text-gray-600/75 `}
                 onClick={toggleMenu}
@@ -149,7 +134,7 @@ export default function Navbar() {
               <div
                 className={` ${
                   isMenuVisible ? "block" : "hidden"
-                }  absolute top-12 -right-5  w-[250px] md:w-[250px] flex flex-col justify-between border-e rounded-lg shadow-lg bg-[--background-color] text-[--text-color] border-solid border-gray-400`}
+                }  absolute top-12 -right-5  w-[250px] md:w-[250px] flex flex-col justify-between border-e rounded-lg shadow-lg bg-[--background-color-Menu] text-gray-500 border-solid border-gray-400`}
               >
                 <div className="px-4 py-6 relative">
                   <div
@@ -237,7 +222,7 @@ export default function Navbar() {
                               href="#"
                               className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                             >
-                              Details
+                              Favorite
                             </Link>
                           </li>
 
@@ -260,7 +245,7 @@ export default function Navbar() {
                 <div className="sticky inset-x-0 bottom-0 border-t border-gray-100  ">
                   <a
                     href="#"
-                    className="flex items-center gap-2 p-4 hover:bg-gray-50 bg-[--background-color] text-[--text-color] "
+                    className="flex items-center gap-2 p-4 hover:bg-gray-50 bg-[--background-color-Menu] text-gray-500 "
                   >
                     <img
                       alt=""

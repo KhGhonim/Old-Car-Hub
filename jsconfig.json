@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
     "checkJs": true,
     "jsx": "react-jsx",
     "baseUrl": "src",
@@ -8,7 +10,7 @@
   },
   "include": [
     "src",
-    "app",
+    "app", "middleware.js",
   ],
   "exclude": [
     "node_modules",

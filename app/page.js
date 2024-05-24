@@ -1,5 +1,5 @@
 import CarModelNames from "./_compoents/CarModelNames";
-import FloatingAD from "./_compoents/FloatingAD";
+import FavouriteClient from "./_compoents/FavouriteClient";
 import Footer from "./_compoents/Footer";
 import HeroSection from "./_compoents/HeroSection";
 import Navbar from "./_compoents/Navbar";
@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <div className=" overflow-hidden">
       <Navbar />
-      {/* <FloatingAD/> */}
       <HeroSection />
       <CarModelNames />
+      <FavouriteClient />
       <ProductFilter />
-      {/* <Footer/> */}
+      <Footer />
     </div>
   );
 }

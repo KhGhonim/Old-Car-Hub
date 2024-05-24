@@ -1,0 +1,103 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Toyota Corolla",
+      "isAutomatic": "Manual",
+      "tireType": "All-Season",
+      "fuelUsage": "8 L/100km",
+      "dailyRent": "$45",
+      "image": "/CarModels/Toyota.png"
+    },
+    {
+      "id": "2",
+
+      "name": "Ferrari",
+      "isAutomatic": "Automatic",
+      "tireType": "All-Season",
+      "fuelUsage": "7.5 L/100km",
+      "dailyRent": "$40",
+      "image": "/CarModels/Ferrari.png"
+    },
+    {
+      "id": "3",
+
+      "name": "Fiat",
+      "isAutomatic": "Manual",
+      "tireType": "Performance",
+      "fuelUsage": "12 L/100km",
+      "dailyRent": "$90",
+      "image": "/CarModels/Fiat.png"
+    },
+    {
+      "id": "4",
+
+      "name": "Chevrolet Tahoe",
+      "isAutomatic": "Manual",
+      "tireType": "All-Terrain",
+      "fuelUsage": "14 L/100km",
+      "dailyRent": "$100",
+      "image": "/CarModels/Chevrolet Tahoe.png"
+    },
+    {
+      "id": "5",
+
+      "name": "Volkswagen Golf",
+      "isAutomatic": "Automatic",
+      "tireType": "All-Season",
+      "fuelUsage": "6.5 L/100km",
+      "dailyRent": "$50",
+      "image": "/CarModels/Volkswagen.png"
+    },
+    {
+      "id": "6",
+
+      "name": "BMW 3 Series",
+      "isAutomatic": "Manual",
+      "tireType": "Performance",
+      "fuelUsage": "9 L/100km",
+      "dailyRent": "$85",
+      "image": "/CarModels/BMW.png"
+    },
+    {
+      "id": "7",
+
+      "name": "Mercedes-Benz C-Class",
+      "isAutomatic": "Manual",
+      "tireType": "Performance",
+      "fuelUsage": "9.5 L/100km",
+      "dailyRent": "$95",
+      "image": "/CarModels/Mercedes.png"
+    },
+    {
+      "id": "8",
+
+      "name": "Hyundai Elantra",
+      "isAutomatic": "Automatic",
+      "tireType": "All-Season",
+      "fuelUsage": "7 L/100km",
+      "dailyRent": "$35",
+      "image": "/CarModels/Hyundai Elantra.png"
+    },
+    {
+      "id": "9",
+
+      "name": "Tesla Model 3",
+      "isAutomatic": "Manual",
+      "tireType": "All-Season",
+      "fuelUsage": "Electric",
+      "dailyRent": "$120",
+      "image": "/CarModels/Tesla Model 3.png"
+    },
+    {
+      "id": "10",
+
+      "name": "Nissan Altima",
+      "isAutomatic": "Manual",
+      "tireType": "All-Season",
+      "fuelUsage": "8 L/100km",
+      "dailyRent": "$55",
+      "image": "/CarModels/Nissan Altima.png"
+    }
+  ]
+}

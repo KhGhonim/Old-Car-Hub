@@ -2,15 +2,45 @@
 
 import { IoIosSearch } from "react-icons/io";
 import { FaArrowUp, FaCar } from "react-icons/fa";
-import { useState } from "react";
-import { cars } from "../../db/CardModelNamesdb";
+import { useEffect, useRef, useState } from "react";
 import Card from "./Card";
 import Product from "./Product";
+import { notFound } from "next/navigation";
+
+async function getData() {
+  const res = await fetch("http://localhost:4000/products/", {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    notFound();
+  }
+  return res.json();
+}
 
 export default function ProductFilterHeader() {
   const [IsitOpened, setIsitOpened] = useState(true);
   const [IsArrowClicked, setIsArrowClicked] = useState(false);
   const [Qurrey, setQurrey] = useState("");
+  const [Catagory, setCatagory] = useState("");
+  const [data, setData] = useState([]);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    getData().then((data) => setData(data));
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        getData().then((data) => setData(data));
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const ArrowToggle = () => {
     setIsArrowClicked(!IsArrowClicked);
   };
@@ -19,36 +49,47 @@ export default function ProductFilterHeader() {
     ArrowToggle();
   };
 
-  const SearchedName = cars.filter((item) => {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsitOpened(true);
+        setIsArrowClicked(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const SearchedName = data.filter((item) => {
     return item.name.toLowerCase().indexOf(Qurrey.toLowerCase()) !== -1;
   });
 
   const FilteredProducts = () => {
-    let CarsProducts = cars;
+    let CarsProducts = data;
 
     if (Qurrey) {
       CarsProducts = SearchedName;
     }
-    return CarsProducts.map(
-      (car) => {
-        return  (
-          <Card
-          name={car.name}
-          isAutomatic={car.isAutomatic}
-          tireType={car.tireType}
-          fuelUsage={car.fuelUsage}
-          dailyRent={car.dailyRent}
-          key={car.name} // Use a unique identifier
-        />
-        )
-      }
-    );
+
+    if (Catagory) {
+      CarsProducts = CarsProducts.filter((item) => {
+        return item.name.toLowerCase().includes(Catagory.toLowerCase());
+      });
+    }
+    return CarsProducts.map((car) => {
+      return <Card car={car} />;
+    });
   };
   const result = FilteredProducts();
 
   return (
-    <div className="  ">
-      <div className=" p-10">
+    <div
+      id="CarCatalogue"
+      className=" bg-[--background-color-Products] rounded-md "
+    >
+      <div className=" p-20">
         <h1 className=" pb-5 font-semibold text-2xl text-[--text-color]">
           Car Catalogue
         </h1>
@@ -82,12 +123,13 @@ export default function ProductFilterHeader() {
           <div
             onClick={ToggleBtn}
             className="group inline-flex items-center overflow-hidden rounded-md border bg-white "
+            ref={dropdownRef}
           >
             <button className="border-e px-5 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700">
               Car Catagory
             </button>
 
-            <button className="h-full p-2 bg-[--buttons-color]  hover:bg-[--buttons-color-hovered] transition-all group-open:-rotate-180">
+            <button className="h-full p-2 bg-[--buttons-color]  hover:bg-[--buttons-color-hovered] transition-all ">
               <FaArrowUp
                 className={`${
                   IsArrowClicked ? "rotate-180" : ""
@@ -102,39 +144,56 @@ export default function ProductFilterHeader() {
             } absolute md:end-0 z-12   mt-12 max-sm:mt-10 w-56 rounded-md border border-gray-100 bg-white shadow-lg`}
             role="menu"
           >
-            <div className="p-2">
-              <a
-                href="#"
-                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700"
-                role="menuitem"
+            <ul className="p-2">
+              <li
+                onClick={() => {
+                  setCatagory("BMW");
+                }}
+                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer"
               >
                 BMW
-              </a>
+              </li>
 
-              <a
-                href="#"
-                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+              <li
+                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer"
                 role="menuitem"
+                onClick={() => {
+                  setCatagory("Ferrari");
+                }}
               >
                 Ferrari
-              </a>
+              </li>
 
-              <a
-                href="#"
-                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+              <li
+                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer"
                 role="menuitem"
+                onClick={() => {
+                  setCatagory("Mercedes");
+                }}
               >
-                Merceeds
-              </a>
+                Mercedes
+              </li>
 
-              <a
-                href="#"
-                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+              <li
+                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer"
                 role="menuitem"
+                onClick={() => {
+                  setCatagory("Fiat");
+                }}
               >
                 Fiat
-              </a>
-            </div>
+              </li>
+
+              <li
+                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer"
+                role="menuitem"
+                onClick={() => {
+                  setCatagory("Volkswagen");
+                }}
+              >
+                Volkswagen
+              </li>
+            </ul>
           </div>
         </div>
       </div>
