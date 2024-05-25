@@ -86,10 +86,6 @@ export default function Navbar() {
                 <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
                   <Link href="#CarCatalogue"> Car Catalogue </Link>
                 </li>
-
-                <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
-                  <Link href="#"> Blog </Link>
-                </li>
               </ul>
             </nav>
           </div>
@@ -111,16 +107,14 @@ export default function Navbar() {
               )}
             </div>
             <div className="sm:flex  text-white mr-3 ">
-            <SignedOut>
+              <SignedOut>
                 <SignInButton />
               </SignedOut>
-              <SignedIn >
+              <SignedIn>
                 <UserButton />
               </SignedIn>
             </div>
             {/* Humburger Icon for max-md screen devices and below */}
-
-
 
             <div className="block relative md:hidden" ref={dropdownRef}>
               <button
@@ -205,64 +199,7 @@ export default function Navbar() {
                         Blogs
                       </Link>
                     </li>
-
-                    <li>
-                      <details className="group [&_summary::-webkit-details-marker]:hidden">
-                        <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                          <span className="text-sm font-medium"> Account </span>
-
-                          <span className="shrink-0 transition duration-300 group-open:-rotate-180">
-                            <IoIosArrowUp />
-                          </span>
-                        </summary>
-
-                        <ul className="mt-2 space-y-1 px-4">
-                          <li>
-                            <Link
-                              href="#"
-                              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                            >
-                              Favorite
-                            </Link>
-                          </li>
-
-                          <li>
-                            <form action="#">
-                              <button
-                                type="submit"
-                                className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
-                              >
-                                Logout
-                              </button>
-                            </form>
-                          </li>
-                        </ul>
-                      </details>
-                    </li>
                   </ul>
-                </div>
-
-                <div className="sticky inset-x-0 bottom-0 border-t border-gray-100  ">
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 p-4 hover:bg-gray-50 bg-[--background-color-Menu] text-gray-500 "
-                  >
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                      className="size-10 rounded-full object-cover"
-                    />
-
-                    <div>
-                      <p className="text-xs">
-                        <strong className="block font-medium">
-                          Eric Frusciante
-                        </strong>
-
-                        <span> eric@frusciante.com </span>
-                      </p>
-                    </div>
-                  </a>
                 </div>
               </div>
             </div>
