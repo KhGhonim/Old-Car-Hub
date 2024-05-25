@@ -7,7 +7,7 @@ import Navbar from "../../_compoents/Navbar";
 import Footer from "../../_compoents/Footer";
 
 async function getData(id) {
-  const res = await fetch(`http://localhost:4000/products/${id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}/${id}`);
 
   if (!res.ok) {
     notFound();
@@ -15,13 +15,24 @@ async function getData(id) {
 
   return res.json();
 }
+
+
+export async function generateMetadata({ params }) {
+  const data = await getData(params.id);
+
+  return {
+    title: data.name,
+  }
+}
+
+
 export default async function page({ params, isSmScren = false }) {
   const data = await getData(params.id);
 
   return (
     <div>
       <Navbar />
-      <div className="group relative py-32 overflow-hidden h-dvh ml-3 mb-3">
+      <div className="group relative py-32 overflow-hidden h-dvh pl-3 max-md:mb-3 bg-[--background-color]">
         <nav aria-label="Breadcrumb" className="flex my-3 md:pl-10">
           <ol className="flex overflow-hidden rounded-lg border border-gray-200 text-gray-600">
             <li className="flex items-center">
@@ -48,7 +59,7 @@ export default async function page({ params, isSmScren = false }) {
           </ol>
         </nav>
 
-        <button className="absolute end-4 top-12 z-10 rounded-full bg-white py-20 pr-5 text-gray-900 transition hover:scale-110 hover:text-red-500/75">
+        <button className="absolute end-4 top-12 z-10 rounded-full bg-[--background-color] py-20 pr-5 text-[--text-color] transition hover:scale-110 hover:text-red-500/75">
           <MdFavoriteBorder />
         </button>
 

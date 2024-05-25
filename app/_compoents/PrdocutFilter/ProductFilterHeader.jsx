@@ -8,7 +8,7 @@ import Product from "./Product";
 import { notFound } from "next/navigation";
 
 async function getData() {
-  const res = await fetch("http://localhost:4000/products/", {
+  const res = await fetch(process.env.NEXT_PUBLIC_PRODUCTS_URL, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -27,18 +27,6 @@ export default function ProductFilterHeader() {
 
   useEffect(() => {
     getData().then((data) => setData(data));
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        getData().then((data) => setData(data));
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
   }, []);
 
   const ArrowToggle = () => {
@@ -79,17 +67,25 @@ export default function ProductFilterHeader() {
       });
     }
     return CarsProducts.map((car) => {
-      return <Card car={car} />;
+      return (
+        <Card
+          name={car.name}
+          isAutomatic={car.isAutomatic}
+          tireType={car.tireType}
+          fuelUsage={car.fuelUsage}
+          dailyRent={car.dailyRent}
+          key={car.name}
+          image={car.image}
+          id={car.id}
+        />
+      );
     });
   };
   const result = FilteredProducts();
 
   return (
-    <div
-      id="CarCatalogue"
-      className=" bg-[--background-color-Products] rounded-md "
-    >
-      <div className=" p-20">
+    <div className=" bg-[--background-color-Products] rounded-md ">
+      <div className=" p-10">
         <h1 className=" pb-5 font-semibold text-2xl text-[--text-color]">
           Car Catalogue
         </h1>
