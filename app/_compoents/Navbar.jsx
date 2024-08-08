@@ -16,38 +16,81 @@ export default function Navbar() {
     setIsMenuVisible((prevState) => !prevState);
   };
 
+  /**
+   * This useEffect hook is responsible for setting the initial theme and
+   * adding the theme class to the document element.
+   * If a theme is saved in local storage, it will be used. Otherwise, the
+   * default theme will be set to "light".
+   */
   useEffect(() => {
+    // Get the saved theme from local storage
     const savedTheme = localStorage.getItem("theme");
+
     if (savedTheme) {
+      //     // If a theme is saved Set the theme state to the saved theme
       setTheme(savedTheme);
+
+      // Add the saved theme class to the document element
       document.documentElement.classList.add(savedTheme);
-    } else {
-      localStorage.setItem("theme", "light");
-      setTheme("light");
-      document.documentElement.classList.add("light");
+    }
+    // If no theme is saved...
+    else {
+      // Set the default theme to "light"
+      const defaultTheme = "light";
+
+      // Save the default theme to local storage
+      localStorage.setItem("theme", defaultTheme);
+
+      // Set the theme state to the default theme
+      setTheme(defaultTheme);
+
+      // Add the default theme class to the document element
+      document.documentElement.classList.add(defaultTheme);
     }
   }, []);
 
+  /**
+   * This function toggles the theme between "light" and "dark".
+   * It also updates the theme state and saves the new theme to local storage.
+   */
+  const toggleTheme = () => {
+    // Determine the new theme based on the current theme state
+    const newTheme = theme === "light" ? "dark" : "light";
+
+    // Update the theme state to the new theme
+    setTheme(newTheme);
+
+    // Remove the current theme class from the document element
+    document.documentElement.classList.remove(theme);
+
+    // Add the new theme class to the document element
+    document.documentElement.classList.add(newTheme);
+
+    // Save the new theme to local storage
+    localStorage.setItem("theme", newTheme);
+  };
+
+  /**
+   * This useEffect hook is responsible for hiding the menu when a click occurs outside of it.
+   */
   useEffect(() => {
+    // Define the event handler for clicks outside of the dropdown
     const handleClickOutside = (event) => {
+      // If the dropdown is visible...
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        // Hide the menu
         setIsMenuVisible(false);
       }
     };
+
+    // Add the event listener for clicks outside of the dropdown
     document.addEventListener("click", handleClickOutside);
+
+    // Remove the event listener when the component unmounts
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
-
   return (
     <header className="bg-white">
       <div className=" max-w-screen-xl ">

@@ -2,10 +2,11 @@
 
 import { IoIosSearch } from "react-icons/io";
 import { FaArrowUp, FaCar } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Card from "./Card";
 import Product from "./Product";
 import { notFound } from "next/navigation";
+import Loading from "../../loading";
 
 async function getData() {
   const res = await fetch(process.env.NEXT_PUBLIC_PRODUCTS_URL, {
@@ -194,7 +195,9 @@ export default function ProductFilterHeader() {
         </div>
       </div>
 
-      <Product result={result} />
+      <Suspense fallback={<Loading />}>
+        <Product result={result} />
+      </Suspense>
     </div>
   );
 }

@@ -13,8 +13,6 @@ export default function Card({
   return (
     <article className="overflow-hidden rounded-2xl  hover:shadow-2xl w-96 p-6 m-4 bg-slate-200 shadow-xl transition-all hover:shadow-slate-400  cursor-pointer flex justify-between flex-col">
       <Link href={`/CarProducts/${id}`}>
-      
-      
       <h1 className="block font-semibold text-center text-gray-500 mb-3 text-xl">
         {" "}
         {name}{" "}
