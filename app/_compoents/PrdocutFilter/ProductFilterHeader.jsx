@@ -8,16 +8,6 @@ import Product from "./Product";
 import { notFound } from "next/navigation";
 import Loading from "../../loading";
 
-async function getData() {
-  const res = await fetch(process.env.NEXT_PUBLIC_PRODUCTS_URL, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    notFound();
-  }
-  return res.json();
-}
-
 export default function ProductFilterHeader() {
   const [IsitOpened, setIsitOpened] = useState(true);
   const [IsArrowClicked, setIsArrowClicked] = useState(false);
@@ -27,7 +17,19 @@ export default function ProductFilterHeader() {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    getData().then((data) => setData(data));
+    const GetData = async () => {
+      const res = await fetch(process.env.NEXT_PUBLIC_PRODUCTS_URL, {
+        cache: "no-store",
+      });
+      if (!res.ok) {
+        notFound();
+      }
+
+      const data = await res.json();
+
+      setData(data);
+    };
+    GetData();
   }, []);
 
   const ArrowToggle = () => {
@@ -126,7 +128,10 @@ export default function ProductFilterHeader() {
               Car Catagory
             </button>
 
-            <button className="h-full p-2 bg-[--buttons-color]  hover:bg-[--buttons-color-hovered] transition-all ">
+            <button
+              id="Buy"
+              className="h-full p-2 bg-[--buttons-color]  hover:bg-[--buttons-color-hovered] transition-all "
+            >
               <FaArrowUp
                 className={`${
                   IsArrowClicked ? "rotate-180" : ""
@@ -142,6 +147,15 @@ export default function ProductFilterHeader() {
             role="menu"
           >
             <ul className="p-2">
+              <li
+                onClick={() => {
+                  setCatagory("");
+                }}
+                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer"
+              >
+                All
+              </li>
+
               <li
                 onClick={() => {
                   setCatagory("BMW");

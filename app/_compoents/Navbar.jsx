@@ -16,77 +16,36 @@ export default function Navbar() {
     setIsMenuVisible((prevState) => !prevState);
   };
 
-  /**
-   * This useEffect hook is responsible for setting the initial theme and
-   * adding the theme class to the document element.
-   * If a theme is saved in local storage, it will be used. Otherwise, the
-   * default theme will be set to "light".
-   */
   useEffect(() => {
-    // Get the saved theme from local storage
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme) {
-      //     // If a theme is saved Set the theme state to the saved theme
       setTheme(savedTheme);
 
-      // Add the saved theme class to the document element
       document.documentElement.classList.add(savedTheme);
-    }
-    // If no theme is saved...
-    else {
-      // Set the default theme to "light"
+    } else {
       const defaultTheme = "light";
-
-      // Save the default theme to local storage
       localStorage.setItem("theme", defaultTheme);
-
-      // Set the theme state to the default theme
       setTheme(defaultTheme);
-
-      // Add the default theme class to the document element
       document.documentElement.classList.add(defaultTheme);
     }
   }, []);
 
-  /**
-   * This function toggles the theme between "light" and "dark".
-   * It also updates the theme state and saves the new theme to local storage.
-   */
   const toggleTheme = () => {
-    // Determine the new theme based on the current theme state
     const newTheme = theme === "light" ? "dark" : "light";
-
-    // Update the theme state to the new theme
     setTheme(newTheme);
-
-    // Remove the current theme class from the document element
     document.documentElement.classList.remove(theme);
-
-    // Add the new theme class to the document element
     document.documentElement.classList.add(newTheme);
-
-    // Save the new theme to local storage
     localStorage.setItem("theme", newTheme);
   };
 
-  /**
-   * This useEffect hook is responsible for hiding the menu when a click occurs outside of it.
-   */
   useEffect(() => {
-    // Define the event handler for clicks outside of the dropdown
     const handleClickOutside = (event) => {
-      // If the dropdown is visible...
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        // Hide the menu
         setIsMenuVisible(false);
       }
     };
-
-    // Add the event listener for clicks outside of the dropdown
     document.addEventListener("click", handleClickOutside);
-
-    // Remove the event listener when the component unmounts
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -123,7 +82,7 @@ export default function Navbar() {
                 </li>
 
                 <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
-                  <Link href="#"> Buy </Link>
+                  <Link href="#Buy"> Buy </Link>
                 </li>
 
                 <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
@@ -134,6 +93,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex justify-between items-center gap-4">
+
+            
+            {/* Theme Toggle */}
             <div>
               {theme === "light" ? (
                 <button onClick={toggleTheme}>
@@ -149,6 +111,8 @@ export default function Navbar() {
                 </button>
               )}
             </div>
+
+            {/* User Button */}
             <div className="sm:flex  text-white mr-3 ">
               <SignedOut>
                 <SignInButton />
@@ -195,10 +159,10 @@ export default function Navbar() {
                   <ul className="mt-6 space-y-1">
                     <li>
                       <Link
-                        href="/"
+                        href="#About"
                         className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
                       >
-                        Landing Page
+                        Contact
                       </Link>
                     </li>
 
@@ -215,7 +179,7 @@ export default function Navbar() {
                         <ul className="mt-2 space-y-1 px-4">
                           <li>
                             <Link
-                              href="#"
+                              href="#Buy"
                               className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                             >
                               Search Car
@@ -227,19 +191,19 @@ export default function Navbar() {
 
                     <li>
                       <Link
-                        href="#"
+                        href="#CarCatalogue"
                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       >
-                        Billing
+                      Catalogue
                       </Link>
                     </li>
 
                     <li>
                       <Link
-                        href="#"
+                        href="#PrimaryClient"
                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       >
-                        Blogs
+                    Clients
                       </Link>
                     </li>
                   </ul>

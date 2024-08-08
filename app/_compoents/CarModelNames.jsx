@@ -24,6 +24,7 @@ export default function CarModelNames() {
 
             <div
               ref={ref}
+              
               className="mt-9 flex justify-center items-center gap-20 flex-wrap max-md:flex-col "
             >
               {carDatabase.map((item) => {
@@ -37,6 +38,7 @@ export default function CarModelNames() {
                   >
                     <Link href={item.link}>
                       <Image
+                      id="CarCatalogue"
                         alt={item.name}
                         src={item.Image}
                         width={250}
