@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { AddToCart } from "../../Redux/CartSlice";
 
 export default function CarCart({ data }) {
   const [Selector, setSelector] = useState(null);
-  console.log(Selector);
+  const dispatch = useDispatch();
   return (
     <div className="w-full ">
       <div className="p-6 bg-[--background-color] text-[--text-color]">
@@ -41,7 +43,14 @@ export default function CarCart({ data }) {
               </select>
             </div>
             <div className="mt-4">
-              <button className="bg-black text-white hover:bg-black/80 px-4 py-2 rounded-lg w-full">
+              <button
+                type="button"
+                disabled={Selector === null}
+                onClick={() => {
+                  dispatch(AddToCart({ ...data, type: Selector }));
+                }}
+                className="bg-black text-white hover:bg-black/70 transition-all duration-300 ease-in px-4 py-2 rounded-lg w-full cursor-pointer"
+              >
                 Add to Cart
               </button>
             </div>

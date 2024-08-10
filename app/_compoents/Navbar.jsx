@@ -3,14 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { CiCloudMoon, CiLight, CiMenuBurger } from "react-icons/ci";
+import { CiCloudMoon, CiLight, CiMenuBurger, CiShop } from "react-icons/ci";
 import { IoMdCloseCircle } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { useSelector } from "react-redux";
 export default function Navbar() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [theme, setTheme] = useState("light");
   const dropdownRef = useRef(null);
+  // @ts-ignore
+  const {shopCartInTheArray} = useSelector((state) => state.ShopCart)
+
 
   const toggleMenu = () => {
     setIsMenuVisible((prevState) => !prevState);
@@ -93,8 +97,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex justify-between items-center gap-4">
-
-            
             {/* Theme Toggle */}
             <div>
               {theme === "light" ? (
@@ -110,6 +112,16 @@ export default function Navbar() {
                   />
                 </button>
               )}
+            </div>
+
+            {/* Cart Icon */}
+            <div className="hidden md:block mx-3 relative">
+              <Link href="/Cart">
+                <CiShop color="white" size={"30px"} />
+              </Link>
+              <div className="absolute top-0 right-0 bg-red-500 w-4 h-4 rounded-full text-white text-xs flex justify-center items-center">
+                {shopCartInTheArray.length}
+              </div>
             </div>
 
             {/* User Button */}
@@ -194,7 +206,7 @@ export default function Navbar() {
                         href="#CarCatalogue"
                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       >
-                      Catalogue
+                        Catalogue
                       </Link>
                     </li>
 
@@ -203,7 +215,7 @@ export default function Navbar() {
                         href="#PrimaryClient"
                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       >
-                    Clients
+                        Clients
                       </Link>
                     </li>
                   </ul>
