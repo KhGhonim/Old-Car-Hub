@@ -21,8 +21,8 @@
   --background-color-Menu: rgb(17 24 39);
   ;
   /* Light grey background */
-
-  --background-color-Products: #a4c0c0a6;
+--card: #ffffff;
+  --background-color-Products: #c8cfcfa6;
   /* Light grey background */
 }
 
@@ -36,6 +36,7 @@
   --background-color-Menu: rgb(17 24 39);
   /* Light grey background */
 
+  --card: #afa7a7;
 
   --nav-color: #ffffff;
   /* Bright blue for primary actions */

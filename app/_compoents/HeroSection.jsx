@@ -1,28 +1,46 @@
-import React from "react";
-
 export default function HeroSection() {
   return (
-    <section className="overflow-hidden bg-[url('/images/HearoSectionBG.png')] bg-cover  bg-top bg-no-repeat h-screen py-8 max-sm:py-16">
-      <div className="bg-black/5 mt-5 p-8 md:p-12 lg:px-16 lg:py-24 ">
-        <div className="text-start w-80 md:text-center   ">
-          <h2 className="text-2xl font-bold  text-[--text-color]  sm:text-3xl md:text-5xl">
-            Latest Cars
-          </h2>
+    <section className="relative h-[100vh] w-full overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/HearoSectionBG.png')" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
+      </div>
 
-          <p className="  mt-6 text-[--text-color] text-lg leading-relaxed ">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-
-          </p>
-
-          <div className="mt-4 sm:mt-8">
-            <a
-              href="#"
-              className="inline-block rounded-full bg-[--buttons-color]  hover:bg-[--buttons-color-hovered] px-12 py-3 text-sm font-medium text-[--text-color] transition  "
-            >
-              Get Yours Today
-            </a>
-          </div>
+      {/* Hero Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 sm:px-10 lg:px-16">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6">
+          Discover Your Dream Car
+        </h1>
+        <p className="text-lg sm:text-2xl font-semibold  text-gray-300 max-w-2xl mb-10">
+          From luxury to sports, find a ride that suits your lifestyle and
+          budget. Explore unmatched options, all in one place.
+        </p>
+        <div className="flex space-x-4">
+          <button className="bg-[--buttons-color] hover:bg-[--buttons-color-hovered] text-white font-bold py-1 px-5 md:py-3 md:px-5 lg:py-3 lg:px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Browse Cars
+          </button>
+          <button className="bg-gray-900 hover:bg-gray-800 text-white font-bold py-1 px-5 md:py-3 md:px-5 lg:py-3 lg:px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Learn More
+          </button>
         </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg
+          className="w-6 h-6 text-white"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
       </div>
     </section>
   );

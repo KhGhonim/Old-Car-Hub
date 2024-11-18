@@ -31,7 +31,7 @@ export default async function page({ params }) {
   const data = await getData(params.id);
 
   return (
-    <div>
+    <div className="bg-[--background-color]">
       <Navbar />
       {data ? (
         <CarCart data={data} />

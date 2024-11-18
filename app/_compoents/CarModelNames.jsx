@@ -8,7 +8,7 @@ import { motion, useInView } from "framer-motion";
 
 export default function CarModelNames() {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
   return (
     <div>
       <section className="bg-[--background-color] text-white h-full  flex justify-center items-center flex-row md:flex-col shadow-xl ">
@@ -24,7 +24,6 @@ export default function CarModelNames() {
 
             <div
               ref={ref}
-              
               className="mt-9 flex justify-center items-center gap-20 flex-wrap max-md:flex-col "
             >
               {carDatabase.map((item) => {
@@ -38,7 +37,7 @@ export default function CarModelNames() {
                   >
                     <Link href={item.link}>
                       <Image
-                      id="CarCatalogue"
+                        id="CarCatalogue"
                         alt={item.name}
                         src={item.Image}
                         width={250}
