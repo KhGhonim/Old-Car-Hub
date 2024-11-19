@@ -3,101 +3,302 @@
     {
       "id": "1",
       "name": "Toyota Corolla",
-      "isAutomatic": "Manual",
-      "tireType": "All-Season",
-      "fuelUsage": "8 L/100km",
-      "dailyRent": "$45",
-      "image": "/CarModels/Toyota.png"
+      "automatic": "Manual",
+      "tire": "All-Season",
+      "fuel": "8 L/100km",
+      "rent": "45",
+      "image": "/CarModels/Toyota.png",
+      "description": "The Toyota Corolla offers a reliable manual driving experience with efficient fuel usage at 8 L/100km. It's equipped with all-season tires, making it a versatile choice for daily use.",
+      "categories": [
+        { "type": "Sedan", "priceRange": "$40-$60" },
+        { "type": "Economy", "priceRange": "$30-$50" },
+        { "type": "Compact", "priceRange": "$35-$55" }
+      ],
+      "acceleration": "7.6 sec 0-60 mph",
+      "range": "518 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": true,
+        "Navigation": true,
+        "Heated Seats": false,
+        "Backup Camera": true,
+        "CarFrontSensors": false,
+        "CarBackSensors": false
+      },
+      "braking": "Average",
+      "handling": "Average",
+      "electric": false,
+      "hybrid": true
     },
     {
       "id": "2",
-
       "name": "Ferrari",
-      "isAutomatic": "Automatic",
-      "tireType": "All-Season",
-      "fuelUsage": "7.5 L/100km",
-      "dailyRent": "$40",
-      "image": "/CarModels/Ferrari.png"
+      "automatic": "Automatic",
+      "tire": "All-Season",
+      "fuel": "7.5 L/100km",
+      "rent": "400",
+      "image": "/CarModels/Ferrari.png",
+      "description": "Experience luxury with the Ferrari's automatic transmission. Despite its performance, it maintains fuel efficiency at 7.5 L/100km, paired with all-season tires for a smooth ride.",
+      "categories": [
+        { "type": "Luxury", "priceRange": "$150-$300" },
+        { "type": "Sports", "priceRange": "$200-$350" },
+        { "type": "Coupe", "priceRange": "$120-$250" }
+      ],
+      "acceleration": "3.5 sec 0-60 mph",
+      "range": "300 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": true,
+        "Navigation": false,
+        "Heated Seats": true,
+        "Backup Camera": true,
+        "CarFrontSensors": false,
+        "CarBackSensors": true
+      },
+      "braking": "Excellent",
+      "handling": "Excellent",
+      "electric": false,
+      "hybrid": true
     },
     {
       "id": "3",
-
       "name": "Fiat",
-      "isAutomatic": "Manual",
-      "tireType": "Performance",
-      "fuelUsage": "12 L/100km",
-      "dailyRent": "$90",
-      "image": "/CarModels/Fiat.png"
+      "automatic": "Manual",
+      "tire": "Performance",
+      "fuel": "12 L/100km",
+      "rent": "90",
+      "image": "/CarModels/Fiat.png",
+      "description": "The Fiat combines a manual transmission with performance tires for a sporty feel. It has a higher fuel usage at 12 L/100km, ideal for those who enjoy a spirited drive.",
+      "categories": [
+        { "type": "Compact", "priceRange": "$35-$55" },
+        { "type": "Economy", "priceRange": "$30-$50" },
+        { "type": "City Car", "priceRange": "$25-$45" }
+      ],
+      "acceleration": "8.2 sec 0-60 mph",
+      "range": "400 miles",
+      "safety": 4,
+      "features": {
+        "Bluetooth": false,
+        "Navigation": true,
+        "Heated Seats": false,
+        "Backup Camera": true,
+        "CarFrontSensors": false,
+        "CarBackSensors": false
+      },
+      "braking": "Average",
+      "handling": "Average",
+      "electric": false,
+      "hybrid": false
     },
     {
       "id": "4",
-
       "name": "Chevrolet Tahoe",
-      "isAutomatic": "Manual",
-      "tireType": "All-Terrain",
-      "fuelUsage": "14 L/100km",
-      "dailyRent": "$100",
-      "image": "/CarModels/Chevrolet Tahoe.png"
+      "automatic": "Manual",
+      "tire": "All-Terrain",
+      "fuel": "14 L/100km",
+      "rent": "100",
+      "image": "/CarModels/Chevrolet Tahoe.png",
+      "description": "The Chevrolet Tahoe is designed for rugged terrains with its all-terrain tires and manual transmission. It consumes 14 L/100km, perfect for off-road adventures.",
+      "categories": [
+        { "type": "SUV", "priceRange": "$100-$150" },
+        { "type": "Off-Road", "priceRange": "$120-$200" },
+        { "type": "Family", "priceRange": "$90-$130" }
+      ],
+      "acceleration": "9.5 sec 0-60 mph",
+      "range": "450 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": true,
+        "Navigation": true,
+        "Heated Seats": false,
+        "Backup Camera": true,
+        "CarFrontSensors": true,
+        "CarBackSensors": false
+      },
+      "braking": "Average",
+      "handling": "Poor",
+      "electric": false,
+      "hybrid": true
     },
     {
       "id": "5",
-
       "name": "Volkswagen Golf",
-      "isAutomatic": "Automatic",
-      "tireType": "All-Season",
-      "fuelUsage": "6.5 L/100km",
-      "dailyRent": "$50",
-      "image": "/CarModels/Volkswagen.png"
+      "automatic": "Automatic",
+      "tire": "All-Season",
+      "fuel": "6.5 L/100km",
+      "rent": "50",
+      "image": "/CarModels/Volkswagen.png",
+      "description": "The Volkswagen Golf is an efficient choice with its automatic transmission and low fuel usage of 6.5 L/100km. Its all-season tires ensure comfort and stability throughout the year.",
+      "categories": [
+        { "type": "Hatchback", "priceRange": "$40-$60" },
+        { "type": "Compact", "priceRange": "$35-$55" },
+        { "type": "Economy", "priceRange": "$30-$50" }
+      ],
+      "acceleration": "7.9 sec 0-60 mph",
+      "range": "550 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": false,
+        "Navigation": true,
+        "Heated Seats": true,
+        "Backup Camera": true,
+        "CarFrontSensors": true,
+        "CarBackSensors": true
+      },
+      "braking": "Average",
+      "handling": "Average",
+      "electric": true,
+      "hybrid": false
     },
     {
       "id": "6",
-
       "name": "BMW 3 Series",
-      "isAutomatic": "Manual",
-      "tireType": "Performance",
-      "fuelUsage": "9 L/100km",
-      "dailyRent": "$85",
-      "image": "/CarModels/BMW.png"
+      "automatic": "Manual",
+      "tire": "Performance",
+      "fuel": "9 L/100km",
+      "rent": "85",
+      "image": "/CarModels/BMW.png",
+      "description": "The BMW 3 Series offers a thrilling drive with its manual transmission and performance tires. It has a moderate fuel consumption of 9 L/100km, combining style with efficiency.",
+      "categories": [
+        { "type": "Luxury", "priceRange": "$150-$300" },
+        { "type": "Sedan", "priceRange": "$100-$150" },
+        { "type": "Performance", "priceRange": "$120-$180" }
+      ],
+      "acceleration": "6.2 sec 0-60 mph",
+      "range": "480 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": false,
+        "Navigation": false,
+        "Heated Seats": true,
+        "Backup Camera": true,
+        "CarFrontSensors": true,
+        "CarBackSensors": true
+      },
+      "braking": "Excellent",
+      "handling": "Excellent",
+      "electric": true,
+      "hybrid": false
     },
     {
       "id": "7",
-
       "name": "Mercedes-Benz C-Class",
-      "isAutomatic": "Manual",
-      "tireType": "Performance",
-      "fuelUsage": "9.5 L/100km",
-      "dailyRent": "$95",
-      "image": "/CarModels/Mercedes.png"
+      "automatic": "Manual",
+      "tire": "Performance",
+      "fuel": "9.5 L/100km",
+      "rent": "95",
+      "image": "/CarModels/Mercedes.png",
+      "description": "The Mercedes-Benz C-Class delivers luxury and performance with a manual transmission and performance tires. It has a fuel usage of 9.5 L/100km, ideal for those who appreciate refined driving.",
+      "categories": [
+        { "type": "Luxury", "priceRange": "$150-$300" },
+        { "type": "Sedan", "priceRange": "$100-$150" },
+        { "type": "Performance", "priceRange": "$120-$180" }
+      ],
+      "acceleration": "6.8 sec 0-60 mph",
+      "range": "470 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": true,
+        "Navigation": false,
+        "Heated Seats": true,
+        "Backup Camera": false,
+        "CarFrontSensors": true,
+        "CarBackSensors": true
+      },
+      "braking": "Excellent",
+      "handling": "Excellent",
+      "electric": false,
+      "hybrid": true
     },
     {
       "id": "8",
-
       "name": "Hyundai Elantra",
-      "isAutomatic": "Automatic",
-      "tireType": "All-Season",
-      "fuelUsage": "7 L/100km",
-      "dailyRent": "$35",
-      "image": "/CarModels/Hyundai Elantra.png"
+      "automatic": "Automatic",
+      "tire": "All-Season",
+      "fuel": "7 L/100km",
+      "rent": "35",
+      "image": "/CarModels/Hyundai Elantra.png",
+      "description": "The Hyundai Elantra is an affordable and efficient option with automatic transmission and a fuel usage of 7 L/100km. Its all-season tires provide a reliable and smooth driving experience.",
+      "categories": [
+        { "type": "Sedan", "priceRange": "$40-$60" },
+        { "type": "Compact", "priceRange": "$35-$55" },
+        { "type": "Economy", "priceRange": "$30-$50" }
+      ],
+      "acceleration": "8.5 sec 0-60 mph",
+      "range": "530 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": true,
+        "Navigation": true,
+        "Heated Seats": false,
+        "Backup Camera": true,
+        "CarFrontSensors": true,
+        "CarBackSensors": false
+      },
+      "braking": "Average",
+      "handling": "Average",
+      "electric": false,
+      "hybrid": true
     },
     {
       "id": "9",
-
       "name": "Tesla Model 3",
-      "isAutomatic": "Manual",
-      "tireType": "All-Season",
-      "fuelUsage": "Electric",
-      "dailyRent": "$120",
-      "image": "/CarModels/Tesla Model 3.png"
+      "automatic": "Automatic",
+      "tire": "All-Season",
+      "fuel": "Electric",
+      "rent": "120",
+      "image": "/CarModels/Tesla Model 3.png",
+      "description": "The Tesla Model 3 offers a cutting-edge electric driving experience. It comes with all-season tires, providing a futuristic and eco-friendly ride.",
+      "categories": [
+        { "type": "Electric", "priceRange": "$100-$150" },
+        { "type": "Luxury", "priceRange": "$150-$300" },
+        { "type": "Sedan", "priceRange": "$100-$150" }
+      ],
+      "acceleration": "4.2 sec 0-60 mph",
+      "range": "350 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": false,
+        "Navigation": false,
+        "Heated Seats": true,
+        "Backup Camera": true,
+        "CarFrontSensors": true,
+        "CarBackSensors": true
+      },
+      "braking": "Excellent",
+      "handling": "Excellent",
+      "electric": true,
+      "hybrid": false
     },
     {
       "id": "10",
-
       "name": "Nissan Altima",
-      "isAutomatic": "Manual",
-      "tireType": "All-Season",
-      "fuelUsage": "8 L/100km",
-      "dailyRent": "$55",
-      "image": "/CarModels/Nissan Altima.png"
+      "automatic": "Automatic",
+      "tire": "All-Season",
+      "fuel": "8 L/100km",
+      "rent": "55",
+      "image": "/CarModels/Nissan Altima.png",
+      "description": "The Nissan Altima is a balanced choice with its automatic transmission and efficient fuel usage of 8 L/100km. Its all-season tires make it versatile for various driving conditions.",
+      "categories": [
+        { "type": "Sedan", "priceRange": "$40-$60" },
+        { "type": "Economy", "priceRange": "$30-$50" },
+        { "type": "Family", "priceRange": "$50-$80" }
+      ],
+      "acceleration": "7.8 sec 0-60 mph",
+      "range": "520 miles",
+      "safety": 5,
+      "features": {
+        "Bluetooth": true,
+        "Navigation": true,
+        "Heated Seats": false,
+        "Backup Camera": true,
+        "Front Sensors": true,
+        "Back Sensors": false
+      },
+      "braking": "Average",
+      "handling": "Average",
+      "electric": true,
+      "hybrid": false
     }
   ]
 }

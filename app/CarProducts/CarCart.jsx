@@ -19,9 +19,9 @@ export default function CarCart({ data }) {
     },
   };
   const handleAddToCart = () => {
-    dispatch(AddToCart({ ...data, selectedCategory }))
+    dispatch(AddToCart({ ...data, selectedCategory }));
     toast.success("Item added to cart");
-  }
+  };
   return (
     <div className="container mx-auto px-4 py-20">
       {/* Header */}
@@ -90,22 +90,21 @@ export default function CarCart({ data }) {
               </div>
               <div>
                 <p className="text-sm">Cost per day</p>
-                <p className="font-medium">${data.dailyRent}</p>
+                <p className="font-medium">${data.rent}</p>
               </div>
               <div>
                 <p className="text-sm">Mileage</p>
-                <p className="font-medium">{data.fuelUsage}</p>
+                <p className="font-medium">{data.fuel}</p>
               </div>
               <div>
                 <p className="text-sm">Type</p>
-                <p className="font-medium">{data.isAutomatic}</p>
+                <p className="font-medium">{data.automatic}</p>
               </div>
               <div>
                 <p className="text-sm">Tire</p>
-                <p className="font-medium">{data.tireType}</p>
+                <p className="font-medium">{data.tire}</p>
               </div>
             </div>
-          
           </div>
         </motion.div>
 
@@ -129,7 +128,7 @@ export default function CarCart({ data }) {
             <option value="">Select a category</option>
             {data.categories.map((category, index) => (
               <option key={index} value={category.type}>
-                {category.type} - ${category.priceRange}
+                {category.type} - {category.priceRange}
               </option>
             ))}
           </select>
@@ -154,16 +153,18 @@ export default function CarCart({ data }) {
             <ul className="list-disc list-inside space-y-2">
               {data.categories.map((category, index) => (
                 <li key={index}>
-                  <span className="font-semibold">{category.type}:</span> From $
-                  {category.priceRange}
+                  <span className="font-semibold">{category.type}:</span> From
+                  <span className="font-semibold ml-2">
+                    {category.priceRange}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="mt-4 mx-4">
-              <p className="text-sm mb-2">Description</p>
-              <p className="font-medium">{data.description}</p>
-            </div>
+            <p className="text-sm mb-2">Description</p>
+            <p className="font-medium">{data.description}</p>
+          </div>
         </motion.div>
       </motion.div>
 

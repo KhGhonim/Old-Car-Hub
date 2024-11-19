@@ -8,6 +8,7 @@ import {
 } from "../../Redux/CartSlice";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { IoIosAlert } from "react-icons/io";
 
 export default function page() {
   const [PromoCode, setPromoCode] = useState(null);
@@ -15,19 +16,25 @@ export default function page() {
   const dispatch = useDispatch();
   // @ts-ignore
   const { shopCartInTheArray } = useSelector((state) => state.ShopCart);
+  const [waranty, setwaranty] = useState(null);
 
   const totalCost = shopCartInTheArray.reduce((acc, item) => {
-    const itemTotal = Number(item.dailyRent) * Number(item.quantity);
+    const itemTotal = Number(item.rent) * Number(item.quantity);
     return acc + itemTotal;
   }, 0);
 
   const TotalCostAfterDeduction = totalCost > 0 ? totalCost - 5.0 : totalCost;
-
   useEffect(() => {
     if (PromoCode) {
       setTotal(TotalCostAfterDeduction / PromoCode);
     }
   }, [PromoCode]);
+
+  useEffect(() => {
+    if (waranty) {
+      setTotal(TotalCostAfterDeduction + waranty);
+    }
+  }, [waranty]);
 
   const HandleDelete = (item) => () => {
     dispatch(DeleteItem(item));
@@ -56,52 +63,67 @@ export default function page() {
                     <th className="text-left py-2 px-4"></th>
                   </tr>
                 </thead>
-                <tbody>
-                  {shopCartInTheArray.map((item, index) => {
-                    const itemTotal =
-                      Number(item.dailyRent) * Number(item.quantity);
+                {shopCartInTheArray && shopCartInTheArray.length > 0 ? (
+                  <tbody>
+                    {shopCartInTheArray.map((item, index) => {
+                      const itemTotal =
+                        Number(item.rent) * Number(item.quantity);
 
-                    return (
-                      <tr key={index} className="border-t">
-                        <td className="py-4 px-4  hidden lg:flex   items-center space-x-4">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="rounded-md w-24 h-16"
-                          />
-                          <span className="font-medium">{item.name}</span>
-                        </td>
-                        <td className="py-4 px-4">
-                          <div className="flex items-center space-x-2">
+                      return (
+                        <tr key={index} className="border-t">
+                          <td className="py-4 px-4  hidden lg:flex   items-center space-x-4">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="rounded-md w-24 h-16"
+                            />
+                            <span className="font-medium">{item.name}</span>
+                          </td>
+                          <td className="py-4 px-4">
+                            <div className="flex items-center space-x-2">
+                              <button
+                                onClick={() => dispatch(LowerTheNumber(item))}
+                                className="bg-gray-200 text-gray-600 px-2 rounded-full"
+                              >
+                                -
+                              </button>
+                              <span>{item.quantity}</span>
+                              <button
+                                onClick={() =>
+                                  dispatch(IncreaseTheNumber(item))
+                                }
+                                className="bg-gray-200 text-gray-600 px-1 rounded-full"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </td>
+                          <td className="py-4 px-4">£{item.rent}</td>
+                          <td className="py-4 px-4">£{itemTotal.toFixed(2)}</td>
+                          <td className="py-4 px-4">
                             <button
-                              onClick={() => dispatch(LowerTheNumber(item))}
-                              className="bg-gray-200 text-gray-600 px-2 rounded-full"
+                              onClick={HandleDelete(item)}
+                              className="text-red-500"
                             >
-                              -
+                              <FaTrash className="h-4 w-4" />
                             </button>
-                            <span>{item.quantity}</span>
-                            <button
-                              onClick={() => dispatch(IncreaseTheNumber(item))}
-                              className="bg-gray-200 text-gray-600 px-1 rounded-full"
-                            >
-                              +
-                            </button>
-                          </div>
-                        </td>
-                        <td className="py-4 px-4">£{item.dailyRent}</td>
-                        <td className="py-4 px-4">£{itemTotal.toFixed(2)}</td>
-                        <td className="py-4 px-4">
-                          <button
-                            onClick={HandleDelete(item)}
-                            className="text-red-500"
-                          >
-                            <FaTrash className="h-4 w-4" />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                ) : (
+                  <tbody>
+                    <tr>
+                      <td colSpan={5} className="text-center py-4 px-4 ">
+                        <p className="flex justify-center items-center text-center font-bold">
+                          Your cart is empty.{" "}
+                          <IoIosAlert className="text-red-500 ml-2 text-xl" />
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                )}
               </table>
             </div>
           </div>
@@ -133,6 +155,7 @@ export default function page() {
                     type="checkbox"
                     id="warranty"
                     className="form-checkbox"
+                    onChange={(e) => setwaranty(Number(1999))}
                   />
                   <label htmlFor="warranty">Extended Warranty (+£1999)</label>
                 </div>
@@ -210,7 +233,10 @@ export default function page() {
                 <div className="flex justify-between font-bold">
                   <span>Total</span>
                   <span>
-                    £{PromoCode ? Total : TotalCostAfterDeduction.toFixed(2)}
+                    £
+                    {PromoCode || waranty
+                      ? Total.toFixed(2)
+                      : TotalCostAfterDeduction.toFixed(2)}
                   </span>
                 </div>
               </div>

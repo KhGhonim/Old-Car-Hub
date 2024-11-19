@@ -13,8 +13,7 @@ export default function Navbar() {
   const [theme, setTheme] = useState("light");
   const dropdownRef = useRef(null);
   // @ts-ignore
-  const {shopCartInTheArray} = useSelector((state) => state.ShopCart)
-
+  const { shopCartInTheArray } = useSelector((state) => state.ShopCart);
 
   const toggleMenu = () => {
     setIsMenuVisible((prevState) => !prevState);
@@ -75,22 +74,23 @@ export default function Navbar() {
             <nav aria-label="Global">
               <ul className="flex items-center gap-6 text-sm ">
                 <li className="text-[--nav-color] transition hover:scale-110 p-3 rounded-md cursor-pointer">
-                  <Link id="About" href="#Contact">
-                    {" "}
-                    About{" "}
-                  </Link>
+                  <Link href="/"> Home</Link>
+                </li>
+
+                <li className="text-[--nav-color] transition hover:scale-110 p-3 rounded-md cursor-pointer">
+                  <Link href="/EcoFriendlyCars"> Eco Friendly Cars </Link>
                 </li>
 
                 <li className="text-[--nav-color] transition  hover:scale-110   p-3 rounded-md cursor-pointer">
-                  <Link href="#PrimaryClient"> Client </Link>
+                  <Link href="/compare"> Car Comparison </Link>
                 </li>
 
                 <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
-                  <Link href="#Buy"> Buy </Link>
+                  <Link href="/CarSanctuary">Car Sanctuary </Link>
                 </li>
 
                 <li className="text-[--nav-color] transition  hover:scale-110  p-3 rounded-md cursor-pointer">
-                  <Link href="#CarCatalogue"> Car Catalogue </Link>
+                  <Link href="/search"> Car Catalogue </Link>
                 </li>
               </ul>
             </nav>
@@ -171,10 +171,10 @@ export default function Navbar() {
                   <ul className="mt-6 space-y-1">
                     <li>
                       <Link
-                        href="#About"
+                        href="/"
                         className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
                       >
-                        Contact
+                        Home
                       </Link>
                     </li>
 
@@ -191,10 +191,19 @@ export default function Navbar() {
                         <ul className="mt-2 space-y-1 px-4">
                           <li>
                             <Link
-                              href="#Buy"
+                              href="/search"
                               className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                             >
                               Search Car
+                            </Link>
+                          </li>
+
+                          <li>
+                            <Link
+                              href="/compare"
+                              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                            >
+                              Car Comparison
                             </Link>
                           </li>
                         </ul>
@@ -203,19 +212,19 @@ export default function Navbar() {
 
                     <li>
                       <Link
-                        href="#CarCatalogue"
+                        href="/CarSanctuary"
                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       >
-                        Catalogue
+                        Car Sanctuary
                       </Link>
                     </li>
 
                     <li>
                       <Link
-                        href="#PrimaryClient"
+                        href="/Cart"
                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       >
-                        Clients
+                        Cart
                       </Link>
                     </li>
                   </ul>

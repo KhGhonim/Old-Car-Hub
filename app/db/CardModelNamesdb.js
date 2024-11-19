@@ -2,40 +2,39 @@ export const carDatabase = [
   {
     name: "BMW",
     Image: "/images/BMW.svg.png",
-    link: "/BMW",
+    link: "/search",
   },
   {
     name: "Ferrari",
     Image: "/images/ferrari.png",
-    link: "/Ferrari",
+    link: "/search",
   },
   {
     name: "Fiat",
     Image: "/images/FIAT.png",
-    link: "/Fiat",
+    link: "/search",
   },
   {
     name: "Ford",
     Image: "/images/Ford-Motor-Company-Logo.png",
-    link: "/Ford",
+    link: "/search",
   },
   {
     name: "Mercedes",
     Image: "/images/Mercedes-Logo.svg.png",
-    link: "/Mercedes",
+    link: "/search",
   },
   {
     name: "Huyundai ",
     Image: "/images/Hyundai.png",
-    link: "/Huyundai",
+    link: "/search",
   },
   {
     name: "Tesla ",
     Image: "/images/tesla.png",
-    link: "/Tesla",
+    link: "/search",
   },
 ];
-
 
 export const cars = [
   {
@@ -44,7 +43,7 @@ export const cars = [
     tireType: "All-Season",
     fuelUsage: "8 L/100km",
     dailyRent: "$45",
-    image : "/CarModels/Toyota.png"
+    image: "/CarModels/Toyota.png",
   },
   {
     name: "Ferrari",
@@ -52,8 +51,7 @@ export const cars = [
     tireType: "All-Season",
     fuelUsage: "7.5 L/100km",
     dailyRent: "$40",
-    image : "/CarModels/Ferrari.png"
-
+    image: "/CarModels/Ferrari.png",
   },
   {
     name: "Fiat",
@@ -61,8 +59,7 @@ export const cars = [
     tireType: "Performance",
     fuelUsage: "12 L/100km",
     dailyRent: "$90",
-    image : "/CarModels/Fiat.png"
-
+    image: "/CarModels/Fiat.png",
   },
   {
     name: "Chevrolet Tahoe",
@@ -70,9 +67,7 @@ export const cars = [
     tireType: "All-Terrain",
     fuelUsage: "14 L/100km",
     dailyRent: "$100",
-    image : "/CarModels/Chevrolet Tahoe.png"
-
-
+    image: "/CarModels/Chevrolet Tahoe.png",
   },
   {
     name: "Volkswagen Golf",
@@ -80,8 +75,7 @@ export const cars = [
     tireType: "All-Season",
     fuelUsage: "6.5 L/100km",
     dailyRent: "$50",
-    image : "/CarModels/Volkswagen.png"
-
+    image: "/CarModels/Volkswagen.png",
   },
   {
     name: "BMW 3 Series",
@@ -89,8 +83,7 @@ export const cars = [
     tireType: "Performance",
     fuelUsage: "9 L/100km",
     dailyRent: "$85",
-    image : "/CarModels/BMW.png"
-
+    image: "/CarModels/BMW.png",
   },
   {
     name: "Mercedes-Benz C-Class",
@@ -98,8 +91,7 @@ export const cars = [
     tireType: "Performance",
     fuelUsage: "9.5 L/100km",
     dailyRent: "$95",
-    image : "/CarModels/Mercedes.png"
-
+    image: "/CarModels/Mercedes.png",
   },
   {
     name: "Hyundai Elantra",
@@ -107,8 +99,7 @@ export const cars = [
     tireType: "All-Season",
     fuelUsage: "7 L/100km",
     dailyRent: "$35",
-    image : "/CarModels/Hyundai Elantra.png"
-
+    image: "/CarModels/Hyundai Elantra.png",
   },
   {
     name: "Tesla Model 3",
@@ -116,8 +107,7 @@ export const cars = [
     tireType: "All-Season",
     fuelUsage: "Electric",
     dailyRent: "$120",
-    image : "/CarModels/Tesla Model 3.png"
-
+    image: "/CarModels/Tesla Model 3.png",
   },
   {
     name: "Nissan Altima",
@@ -125,8 +115,6 @@ export const cars = [
     tireType: "All-Season",
     fuelUsage: "8 L/100km",
     dailyRent: "$55",
-    image : "/CarModels/Nissan Altima.png"
-
-  }
+    image: "/CarModels/Nissan Altima.png",
+  },
 ];
-

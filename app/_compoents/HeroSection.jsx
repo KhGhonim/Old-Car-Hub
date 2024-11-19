@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HeroSection() {
   return (
     <section className="relative h-[100vh] w-full overflow-hidden">
@@ -19,12 +21,12 @@ export default function HeroSection() {
           budget. Explore unmatched options, all in one place.
         </p>
         <div className="flex space-x-4">
-          <button className="bg-[--buttons-color] hover:bg-[--buttons-color-hovered] text-white font-bold py-1 px-5 md:py-3 md:px-5 lg:py-3 lg:px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+          <Link className="bg-[--buttons-color] hover:bg-[--buttons-color-hovered] text-white font-bold py-1 px-5 md:py-3 md:px-5 lg:py-3 lg:px-8 rounded-full text-sm md:text-lg  transition duration-300 ease-in-out transform hover:scale-105" href={"/search"}>
             Browse Cars
-          </button>
-          <button className="bg-gray-900 hover:bg-gray-800 text-white font-bold py-1 px-5 md:py-3 md:px-5 lg:py-3 lg:px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
-            Learn More
-          </button>
+          </Link>
+          <Link className="bg-gray-900 hover:bg-gray-800 text-white font-bold py-1 px-5 md:py-3 md:px-5 lg:py-3 lg:px-8 rounded-full text-sm md:text-lg transition duration-300 ease-in-out transform hover:scale-105" href={"/compare"}>
+            Car Comparison
+          </Link>
         </div>
       </div>
 

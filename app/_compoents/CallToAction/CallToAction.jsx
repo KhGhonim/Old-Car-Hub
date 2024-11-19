@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CallToAction() {
   return (
     <section className="py-16 bg-gray-50 text-primary-foreground">
@@ -8,9 +10,9 @@ export default function CallToAction() {
         <p className="text-xl mb-8">
           Start your search now and drive home happy.
         </p>
-        <button className="bg-[--buttons-color] hover:bg-[--buttons-color] text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+        <Link className="bg-[--buttons-color] hover:bg-[--buttons-color] text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105" href={"/search"}>
           Browse All Cars
-        </button>
+        </Link>
       </div>
     </section>
   );

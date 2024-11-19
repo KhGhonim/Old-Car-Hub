@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Card({
   name,
-  isAutomatic,
-  tireType,
-  fuelUsage,
-  dailyRent,
+  automatic,
+  tire,
+  fuel,
+  rent,
   image,
   id,
 }) {
@@ -30,7 +30,7 @@ export default function Card({
             quality={100}
           />
           <p className="absolute top-4 left-4 bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
-            ${dailyRent}/Day
+            ${rent}/Day
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default function Card({
               priority
             />
             <p className="mt-2 text-gray-700 text-sm font-medium">
-              {isAutomatic ? "Automatic" : "Manual"}
+              {automatic ? "Automatic" : "Manual"}
             </p>
           </div>
           <div className="flex flex-col items-center">
@@ -58,7 +58,7 @@ export default function Card({
               quality={100}
               priority
             />
-            <p className="mt-2 text-gray-700 text-sm font-medium">{tireType}</p>
+            <p className="mt-2 text-gray-700 text-sm font-medium">{tire}</p>
           </div>
           <div className="flex flex-col items-center">
             <Image
@@ -70,7 +70,7 @@ export default function Card({
               priority
             />
             <p className="mt-2 text-gray-700 text-sm font-medium">
-              {fuelUsage}
+              {fuel}
             </p>
           </div>
         </div>

@@ -7,30 +7,16 @@ import Card from "./Card";
 import Product from "./Product";
 import { notFound } from "next/navigation";
 import Loading from "../../loading";
+import useFetchCarsData from "../../../hooks/FetchData";
 
 export default function ProductFilterHeader() {
   const [IsitOpened, setIsitOpened] = useState(true);
   const [IsArrowClicked, setIsArrowClicked] = useState(false);
   const [Qurrey, setQurrey] = useState("");
   const [Catagory, setCatagory] = useState("");
-  const [data, setData] = useState([]);
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    const GetData = async () => {
-      const res = await fetch(process.env.NEXT_PUBLIC_PRODUCTS_URL, {
-        cache: "no-store",
-      });
-      if (!res.ok) {
-        notFound();
-      }
-
-      const data = await res.json();
-
-      setData(data);
-    };
-    GetData();
-  }, []);
+  const { data, loading } = useFetchCarsData();
 
   const ArrowToggle = () => {
     setIsArrowClicked(!IsArrowClicked);
@@ -73,10 +59,10 @@ export default function ProductFilterHeader() {
       return (
         <Card
           name={car.name}
-          isAutomatic={car.isAutomatic}
-          tireType={car.tireType}
-          fuelUsage={car.fuelUsage}
-          dailyRent={car.dailyRent}
+          automatic={car.automatic}
+          tire={car.tire}
+          fuel={car.fuel}
+          rent={car.rent}
           key={car.name}
           image={car.image}
           id={car.id}
@@ -87,7 +73,7 @@ export default function ProductFilterHeader() {
   const result = FilteredProducts();
 
   return (
-    <div className=" bg-[--background-color-Products] rounded-md ">
+    <div className=" bg-[--background-color-Products] rounded-md pt-24">
       <div className=" p-10">
         <h1 className=" pb-5 font-semibold text-2xl text-[--text-color]">
           Car Catalogue
