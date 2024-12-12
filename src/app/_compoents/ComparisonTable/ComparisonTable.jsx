@@ -4,8 +4,10 @@ import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { MdDone } from "react-icons/md";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function ComparisonTable(selectedCars) {
+export default function ComparisonTable(selectedCars,   {params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
 
   const [activeTab, setActiveTab] = useState("specifications");

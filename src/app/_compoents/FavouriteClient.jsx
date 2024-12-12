@@ -2,8 +2,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function FavouriteClient() {
+export default function FavouriteClient({params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });

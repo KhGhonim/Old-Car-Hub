@@ -6,8 +6,10 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function CarModelNames() {
+export default function CarModelNames({params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });

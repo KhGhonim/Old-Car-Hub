@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function CompareCarsHelper() {
+export default function CompareCarsHelper({params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
 
   const [openAccordion, setOpenAccordion] = useState(null);

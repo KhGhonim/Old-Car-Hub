@@ -3,8 +3,10 @@ import { MdKeyboardArrowRight, MdPreview } from "react-icons/md";
 import { FaBalanceScale } from "react-icons/fa";
 import { FaCarRear } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function CompareCarsSection() {
+export default function CompareCarsSection({params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
 
   return (

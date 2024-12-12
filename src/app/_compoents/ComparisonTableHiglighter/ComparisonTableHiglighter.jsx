@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function ComparisonTableHiglighter({ selectedCars }) {
+export default function ComparisonTableHiglighter({ selectedCars, params: {locale} }) {
+  setRequestLocale(locale);
   const t = useTranslations();
 
   return (
