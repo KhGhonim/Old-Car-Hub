@@ -7,8 +7,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function CarCart({ data }) {
+export default function CarCart({ data, params: {locale} }) {
+  setRequestLocale(locale);
   const t = useTranslations();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const dispatch = useDispatch();

@@ -11,9 +11,11 @@ import ComparisonTableHiglighter from "app/_compoents/ComparisonTableHiglighter/
 import useFetchCarsData from "hooks/FetchData";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { setRequestLocale } from "next-intl/server";
 
 
-export default function page() {
+export default function page({params: {locale}}) {
+  setRequestLocale(locale);
   const { data, loading } = useFetchCarsData();
   const [selectedCars, setSelectedCars] = useState([]);
   const dispatch = useDispatch();

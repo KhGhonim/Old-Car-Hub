@@ -10,8 +10,10 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { IoIosAlert } from "react-icons/io";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function page() {
+export default function page({params: {locale}}) {
+  setRequestLocale(locale);
   const [PromoCode, setPromoCode] = useState(null);
   const [Total, setTotal] = useState(0);
   const dispatch = useDispatch();

@@ -8,8 +8,10 @@ import { FiZap } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function page() {
+export default function page({params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
   const [selectedCar, setSelectedCar] = useState(null);
   const ref = useRef(null);
@@ -52,6 +54,7 @@ export default function page() {
       <main className="container mx-auto px-4 py-24">
         {/*   Car Sanctuary */}
         <motion.h1
+          // @ts-ignore
           className="text-4xl font-bold mb-8 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -62,6 +65,7 @@ export default function page() {
 
         <section className="mb-12">
           <motion.div
+            // @ts-ignore
             className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,6 +73,7 @@ export default function page() {
           >
             <div className="p-6">
               <motion.h2
+                // @ts-ignore
                 className="text-2xl font-bold mb-4 flex items-center text-primary"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -78,6 +83,7 @@ export default function page() {
                 {t("welcomeToTheCarSanctuary")}
               </motion.h2>
               <motion.p
+                // @ts-ignore
                 className="text-lg mb-4 opacity-80"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -87,6 +93,7 @@ export default function page() {
               </motion.p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <motion.div
+                  // @ts-ignore
                   className="flex items-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -96,6 +103,7 @@ export default function page() {
                   <span>{t("preservingAutomotiveHeritage")}</span>
                 </motion.div>
                 <motion.div
+                  // @ts-ignore
                   className="flex items-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -105,6 +113,7 @@ export default function page() {
                   <span>{t("showcasingInnovation")}</span>
                 </motion.div>
                 <motion.div
+                  // @ts-ignore
                   className="flex items-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -121,6 +130,7 @@ export default function page() {
         {/* Featured Sanctuary Cars */}
         <section className="mb-12">
           <motion.h2
+            // @ts-ignore
             className="text-2xl font-bold mb-4 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -133,6 +143,7 @@ export default function page() {
             {carSanctuaryData.map((car) => (
               <motion.div
                 key={car.id}
+                // @ts-ignore
                 className="overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -195,6 +206,7 @@ export default function page() {
         {/* Sanctuary Experience */}
         <section className="mb-12" ref={ref2}>
           <motion.h2
+            // @ts-ignore
             className="text-2xl font-bold mb-4 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView2 ? 1 : 0 }}
@@ -204,6 +216,7 @@ export default function page() {
           </motion.h2>
 
           <motion.div
+            // @ts-ignore
             className="grid w-full grid-cols-3 mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView2 ? 1 : 0 }}
@@ -242,6 +255,7 @@ export default function page() {
           </motion.div>
 
           <motion.div
+            // @ts-ignore
             className="space-y-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView2 ? 1 : 0 }}
@@ -250,6 +264,7 @@ export default function page() {
             {/* Visit Tab Content */}
             {activeTab === "visit" && (
               <motion.div
+                // @ts-ignore
                 className="bg-white shadow-lg rounded-lg p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isInView2 ? 1 : 0, y: isInView2 ? 0 : 20 }}
@@ -271,6 +286,7 @@ export default function page() {
             {/* Events Tab Content */}
             {activeTab === "events" && (
               <motion.div
+                // @ts-ignore
                 className="bg-white shadow-lg rounded-lg p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isInView2 ? 1 : 0, y: isInView2 ? 0 : 20 }}
@@ -296,6 +312,7 @@ export default function page() {
             {/* Contribute Tab Content */}
             {activeTab === "contribute" && (
               <motion.div
+                // @ts-ignore
                 className="bg-white shadow-lg rounded-lg p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isInView2 ? 1 : 0, y: isInView2 ? 0 : 20 }}
@@ -323,6 +340,7 @@ export default function page() {
         {/* Join Our Community Section */}
         <section className="mb-12" ref={ref}>
           <motion.h2
+            // @ts-ignore
             className="text-2xl font-bold mb-4 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
@@ -332,6 +350,7 @@ export default function page() {
           </motion.h2>
 
           <motion.div
+            // @ts-ignore
             className="bg-white shadow-lg rounded-lg p-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
@@ -349,6 +368,7 @@ export default function page() {
             </motion.div>
 
             <motion.form
+              // @ts-ignore
               className="space-y-4 mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: isInView ? 1 : 0 }}

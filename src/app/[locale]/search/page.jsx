@@ -3,8 +3,10 @@ import ProductFilterHeader from "app/_compoents/PrdocutFilter/ProductFilterHeade
 import { motion } from "framer-motion";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
-export default function page() {
+export default function page({params: {locale}}) {
+  setRequestLocale(locale);
   const t = useTranslations();
 
   return (
