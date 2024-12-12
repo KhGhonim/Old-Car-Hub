@@ -5,7 +5,7 @@ import Footer from "app/_compoents/Footer";
 import Navbar from "app/_compoents/Navbar";
 import { StoreProvider } from "../../Redux/StoreProvider";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "i18n/routing";
 
@@ -28,6 +28,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
   if (!routing.locales.includes(locale)) {
     notFound();
   }
+  setRequestLocale(locale);
 
   // Providing all messages to the client
   // side is the easiest way to get started
