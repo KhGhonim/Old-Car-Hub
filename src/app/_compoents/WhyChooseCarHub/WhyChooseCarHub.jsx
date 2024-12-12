@@ -1,9 +1,8 @@
 import { FaStar } from "react-icons/fa";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
-export default function CustomerTestimonials({params: {locale}}) {
-  setRequestLocale(locale);
+export default function CustomerTestimonials() {
+  
   const t = useTranslations();
   return (
     <section className="py-16 bg-gray-50">

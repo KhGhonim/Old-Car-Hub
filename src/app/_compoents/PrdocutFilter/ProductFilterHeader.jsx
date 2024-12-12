@@ -8,10 +8,8 @@ import Product from "./Product";
 import useFetchCarsData from "../../../hooks/FetchData";
 import Loading from "app/[locale]/loading";
 import { useLocale, useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
-export default function ProductFilterHeader({params: {locale}}) {
-  setRequestLocale(locale);
+export default function ProductFilterHeader() {
   const [IsitOpened, setIsitOpened] = useState(true);
   const [IsArrowClicked, setIsArrowClicked] = useState(false);
   const [Qurrey, setQurrey] = useState("");

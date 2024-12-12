@@ -5,8 +5,7 @@ import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
-export default function page({params: {locale}}) {
-  setRequestLocale(locale);
+export default function page() {
   const t = useTranslations();
 
   return (

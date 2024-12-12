@@ -10,9 +10,7 @@ import { useSelector } from "react-redux";
 import { Link } from "i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
 import LanguageSelector from "./LanguageSelector/LanguageSelector";
-import { setRequestLocale } from "next-intl/server";
-export default function Navbar({ params: { locale } }) {
-  setRequestLocale(locale);
+export default function Navbar({  }) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [theme, setTheme] = useState("light");
   const dropdownRef = useRef(null);

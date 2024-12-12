@@ -15,8 +15,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
 
-export default function page({params: {locale}}) {
-  setRequestLocale(locale);
+export default function page() {
   const [selectedTab, setSelectedTab] = useState("electric");
   const [openIndex, setOpenIndex] = useState(null);
   const LocaleActive = useLocale();

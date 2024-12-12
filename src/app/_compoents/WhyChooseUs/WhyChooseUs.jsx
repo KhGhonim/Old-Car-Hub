@@ -1,8 +1,6 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
-export default function WhyChooseUs({params: {locale}}) {
-  setRequestLocale(locale);
+export default function WhyChooseUs() {
   const t = useTranslations();
   return (
     <section className="py-16 bg-gray-900 text-white">

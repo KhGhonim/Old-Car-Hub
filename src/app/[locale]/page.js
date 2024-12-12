@@ -1,3 +1,5 @@
+"use client";
+
 import CallToAction from "app/_compoents/CallToAction/CallToAction";
 import CarModelNames from "app/_compoents/CarModelNames";
 import CompareCarsSection from "app/_compoents/CompareCarsSection/CompareCarsSection";

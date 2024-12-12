@@ -8,10 +8,9 @@ import { FiZap } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
-export default function page({params: {locale}}) {
-  setRequestLocale(locale);
+export default function page() {
+  
   const t = useTranslations();
   const [selectedCar, setSelectedCar] = useState(null);
   const ref = useRef(null);

@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
-export default function CallToAction({params: {locale}}) {
-  setRequestLocale(locale);
+export default function CallToAction() {
   const t = useTranslations();
   return (
     <section className="py-16 bg-gray-50 text-primary-foreground">

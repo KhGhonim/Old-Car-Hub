@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
-export default function HeroSection({params: {locale}}) {
-  setRequestLocale(locale);
+export default function HeroSection() {
   const t = useTranslations();
   return (
     <section className="relative h-[100vh] w-full overflow-hidden">

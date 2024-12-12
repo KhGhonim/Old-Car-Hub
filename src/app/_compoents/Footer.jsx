@@ -5,10 +5,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "i18n/routing";
-import { setRequestLocale } from "next-intl/server";
 
-export default function Footer({params: {locale}}) {
-  setRequestLocale(locale);
+export default function Footer() {
+  
   const [state, handleSubmit] = useForm("mvoenblw");
   const notify = () => toast("Thanks for joining!");
   const t = useTranslations("");
